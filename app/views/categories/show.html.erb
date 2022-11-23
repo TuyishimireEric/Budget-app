@@ -1,0 +1,22 @@
+<div class="nav">
+  <%= link_to categories_path do %> 
+    <%= image_tag 'back.png' %>
+  <% end %>
+  <h1>CATEGORY DETAILS</h1>
+  <%= image_tag 'hm.png' %>
+</div>
+<div class="title">
+  <%= image_tag(@category.icon) %>
+  <h2><%= @category.name %></h2>
+  <h2>$<%= @category.transactions %></h2>
+</div>
+
+<p style="color: green"><%= notice %></p>
+
+
+<section class="footer">
+  <div class="links">
+    <%= link_to "Edit", edit_category_path(@category), class:"link" %>
+    <%= button_to "Delete", @category, method: :delete, class:"link" %>
+  </div>
+</section>

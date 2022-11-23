@@ -1,0 +1,11 @@
+<div class="nav">
+  <%= link_to categories_path do %> 
+    <%= image_tag 'back.png' %>
+  <% end %>
+  <h1>NEW CATEGORIES</h1>
+  <%= image_tag 'hm.png' %>
+</div>
+
+<%= render "form", category: @category %>
+
+<br>
