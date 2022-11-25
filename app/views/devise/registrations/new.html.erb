@@ -1,0 +1,18 @@
+<div class="nav">
+  <h1>SIGN UP</h1>
+  <%= link_to "Log In", new_session_path(resource_name) %> 
+</div>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+    
+    <%= f.text_field :name, autofocus: true, autocomplete: "name", placeholder:"Enter your Name...", required: true %>
+    <%= f.email_field :email,  placeholder:"Your e-mail...", required: true %>
+    <%= f.password_field :password, placeholder:"Create a Password...", required: true %>
+    <%= f.password_field :password_confirmation, placeholder:"Confirm Password...", required: true %>
+
+  <div class="submit">
+    <%= f.submit "Sign up" %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>

@@ -1,0 +1,32 @@
+<div class="nav">
+  <%= link_to category_transactions_path do %> 
+    <%= image_tag 'back.png' %>
+  <% end %>
+  <h1>NEW CATEGORIES</h1>
+  <%= image_tag 'hm.png' %>
+</div>
+
+<%= form_for @transaction, url:  category_transactions_url  do |form| %>
+  <% if @transaction.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(transaction.errors.count, "error") %> prohibited this transaction from being saved:</h2>
+ 
+      <ul>
+        <% transaction.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+ 
+    <%= form.text_field :name, placeholder:"name...", required: true %>
+    <%= form.number_field :amount, placeholder:"amount", required: true %>
+    <%= form.collection_select(:category_id, current_user.categories, :id, :name, {}, { multiple: true, size: 4,  class: "input" }) %>
+ 
+    <div class="submit">
+      <%= form.submit %>
+    </div>
+  <% end %>
+
+<br>
+
