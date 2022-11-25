@@ -1,14 +1,27 @@
+
+<div class="nav">
+   <%= link_to categories_path do %> 
+    <%= image_tag 'back.png' %>
+  <% end %>
+  <h1>BUDGET APP</h1>
+  <%= image_tag 'hm.png' %>
+</div>
+
 <p style="color: green"><%= notice %></p>
+<div class="title">
+  <h2><%= @category.name %></h2>
+  <h2>$<%= @category.transactions.sum(:amount) %></h2>
+</div>
 
-<h1>Transactions</h1>
-
-<div id="transactions">
+<div id="categories">
   <% @transactions.each do |transaction| %>
-    <%= render transaction %>
-    <p>
-      <%= link_to "Show this transaction", transaction %>
-    </p>
+    <div class="category">
+        <h2><%= transaction.name %></h2>
+        <p>$<%= transaction.amount %></p>
+    </div>
   <% end %>
 </div>
 
-<%= link_to "New transaction", new_transaction_path %>
+<section class="footer">
+<%= link_to "New Transaction", new_category_transaction_path(@category_id), class:"button" %>
+</section>

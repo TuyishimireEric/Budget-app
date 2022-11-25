@@ -1,24 +1,20 @@
-<h2>Log in</h2>
+<div class="nav">
+  <h1>LOG IN</h1>
+  <%= link_to "Sign Up", new_registration_path(resource_name) %> 
+</div>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder:"Email..." %>
+    <%= f.password_field :password, autocomplete: "current-password", placeholder:"Password..." %>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+    <% if devise_mapping.rememberable? %>
+      <div class="center">
+        <%= f.check_box :remember_me, class:"check" %>
+        <%= f.label :remember_me, class:"c-label" %>
+      </div>
+    <% end %>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-    </div>
-  <% end %>
-
-  <div class="actions">
+  <div class="submit">
     <%= f.submit "Log in" %>
   </div>
 <% end %>
